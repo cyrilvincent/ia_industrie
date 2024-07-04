@@ -1,10 +1,12 @@
 import sklearn
-import sklearn.linear_model as lm
+import sklearn.linear_model as lm # pip install scikit-learn
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import datetime
 
 print(sklearn.__version__)
+print(datetime.datetime.now().isoformat())
 
 # 0 Chargement des data
 dataframe = pd.read_csv("data/house/house.csv")

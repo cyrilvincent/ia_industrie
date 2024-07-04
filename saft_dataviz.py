@@ -2,7 +2,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-dataframe = pd.read_csv("data/saft/BMM5/BMM5-CAPA-20230216-100330-DATA_MODULE_1_0.csv", delimiter=";", skip_blank_lines=2)
+dataframe = pd.read_csv("data/saft/BMM5/BMM5-CAPA-20230216-100330-DATA_MODULE_1_0.csv", index_col="DATE", delimiter=";", skip_blank_lines=2)
 print(dataframe.head())
 
 plt.subplot(231)
