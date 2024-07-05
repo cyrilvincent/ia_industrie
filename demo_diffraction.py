@@ -4,6 +4,7 @@ import sklearn.linear_model as lm
 import sklearn.model_selection as ms
 import sklearn.neighbors as n
 import matplotlib.pyplot as plt
+import sklearn.preprocessing as pp
 
 dataframe = pd.read_csv("data/diffraction/data.csv", index_col="id")
 print(dataframe.describe())
@@ -20,7 +21,17 @@ plt.show()
 
 np.random.seed(42)
 
+scaler = pp.StandardScaler(x)
+scaler.fit(x) # Calcul moy et std pour chacune des colonnes
+x = scaler.transform(x) # (x - moy) / std
+# scaler.inverse_transform(x)
+
+
 xtrain, xtest, ytrain, ytest = ms.train_test_split(x, y, train_size=0.8, test_size=0.2)
+
+
+
+
 
 # model = lm.LinearRegression()
 model = n.KNeighborsClassifier(n_neighbors=5)
