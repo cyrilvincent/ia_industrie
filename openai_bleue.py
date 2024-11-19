@@ -1,4 +1,4 @@
-from openai import OpenAI
+from openai import OpenAI # pip install openai
 
 with open("data/openai/openai.env") as f:
     key = f.read()

@@ -1,5 +1,6 @@
-from openai import OpenAI
+from openai import OpenAI, __version__
 
+print(__version__)
 def chat(system: str, user: str) -> str:
     completion = client.chat.completions.create(
         model=chat_model,

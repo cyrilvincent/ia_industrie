@@ -1,14 +1,14 @@
 import datetime
-import whisper # pip install openai-whisper
+# import whisper # pip install openai-whisper
 import os
 from openai import OpenAI # pip install openai
 
 class OpenAIService:
 
     def __init__(self, whisper_model="base", chat_model="gpt-3.5-turbo-1106", chat_limit=16385, with_whisper=False):
-        if with_whisper:
-            os.environ["path"] += ";c:\\ffmpeg\\bin"
-            self.model = whisper.load_model(whisper_model)
+        # if with_whisper:
+        #     os.environ["path"] += ";c:\\ffmpeg\\bin"
+        #     self.model = whisper.load_model(whisper_model)
         with open("data/openai/openai.env") as f:
             key = f.read()
         self.client = OpenAI(api_key=key)
@@ -38,7 +38,7 @@ class OpenAIService:
         if ponctuation:
             s+="avec de la ponctuation "
         if bank:
-            s+="avec un vocabulaire bancaire"
+            s+="avec un vocabulaire industriel"
         completion = self.client.chat.completions.create(
             model=self.chat_model,
             messages=[{"role": "system", "content": s},
