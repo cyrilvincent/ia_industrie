@@ -5,6 +5,7 @@ import numpy as np
 import sklearn.preprocessing as pp
 import sklearn.pipeline as pipe
 import sklearn.model_selection as ms
+import sklearn.neighbors as nn
 
 print(pd.__version__)
 
@@ -23,11 +24,15 @@ xtrain, xtest, ytrain, ytest = ms.train_test_split(x, y, train_size=0.8, test_si
 # 2 = créer le modèle
 # model = lm.LinearRegression()
 degre = 1
-model = pipe.make_pipeline(pp.PolynomialFeatures(degre), lm.Ridge())
+# model = pipe.make_pipeline(pp.PolynomialFeatures(degre), lm.Ridge())
+for k in range(3,12,2):
+    model = nn.KNeighborsClassifier(n_neighbors=k)
+    model.fit(xtrain, ytrain)
+    print(k, model.score(xtest, ytest))
 
 # 3 = Fit = Apprentissage
 # Un seul interdit, ne JAMAIS s'entrainer sur le xtest
-model.fit(xtrain, ytrain)
+
 
 
 xsample = np.arange(400).reshape(-1, 1)
