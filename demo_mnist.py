@@ -27,7 +27,10 @@ x_test = x_test.reshape(-1, 28*28)
 
 # model = nn.KNeighborsClassifier(n_neighbors=3)
 # model = rf.RandomForestClassifier()
-model = neural.MLPClassifier(hidden_layer_sizes=(784,200,100))
+# Inputs : 784
+# Outputs : 10
+# Data = 60000 4<log(60000)<5
+model = neural.MLPClassifier(hidden_layer_sizes=(784,400,200,100))
 model.fit(x_train, y_train)
 
 print(model.score(x_test, y_test), model.score(x_train, y_train))
