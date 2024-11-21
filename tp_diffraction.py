@@ -5,11 +5,14 @@ import sklearn.preprocessing as pp
 import sklearn.pipeline as pipe
 import sklearn.model_selection as ms
 import sklearn.neighbors as nn
+import sklearn.ensemble as rf
+import matplotlib.pyplot as plt
 
 dataframe = pd.read_csv("data/diffraction/data.csv", index_col="id")
 # y = category 1 = ko, 0 = ok
 # x = tout sauf y, 30 colonnes
 print(dataframe.describe())
+dataframe["rnd"] = np.random.rand(569)
 y = dataframe.category
 x = dataframe.drop("category", axis=1)
 
@@ -22,16 +25,35 @@ x = dataframe.drop("category", axis=1)
 
 scaler = pp.StandardScaler()
 scaler.fit(x)
-x = scaler.transform(x)
+xscaler = scaler.transform(x)
 
 
 np.random.seed(0)
-xtrain, xtest, ytrain, ytest = ms.train_test_split(x, y, train_size=0.8, test_size=0.2)
+xtrain, xtest, ytrain, ytest = ms.train_test_split(xscaler, y, train_size=0.8, test_size=0.2)
 # model = lm.LinearRegression()
-for k in range(3,12,2):
-    model = nn.KNeighborsClassifier(n_neighbors=k)
-    model.fit(xtrain, ytrain)
-    train_score = model.score(xtrain, ytrain)
-    test_score = model.score(xtest, ytest)
-    print(f"k={k}, training score: {train_score * 100:.0f}%, test score: {test_score * 100:.0f}%")
+# for k in range(3,12,2):
+#     model = nn.KNeighborsClassifier(n_neighbors=k)
+#     model.fit(xtrain, ytrain)
+#     train_score = model.score(xtrain, ytrain)
+#     test_score = model.score(xtest, ytest)
+#     print(f"k={k}, training score: {train_score * 100:.0f}%, test score: {test_score * 100:.0f}%")
+model = rf.RandomForestClassifier()
+model.fit(xtrain, ytrain)
+train_score = model.score(xtrain, ytrain)
+test_score = model.score(xtest, ytest)
+print(f"training score: {train_score * 100:.0f}%, test score: {test_score * 100:.0f}%")
+
+print(model.feature_importances_)
+
+plt.bar(x.columns, model.feature_importances_)
+plt.xticks(rotation=45)
+plt.show()
+
+from sklearn.tree import export_graphviz
+export_graphviz(model.estimators_[0],
+                 out_file='data/diffraction/tree.dot',
+                 feature_names = x.columns,
+                 class_names = ["0", "1"],
+                 rounded = True, proportion = False,
+                 precision = 2, filled = True)
 
