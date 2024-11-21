@@ -4,6 +4,7 @@ import numpy as np
 import sklearn.preprocessing as pp
 import sklearn.pipeline as pipe
 import sklearn.model_selection as ms
+import sklearn.neighbors as nn
 
 dataframe = pd.read_csv("data/diffraction/data.csv", index_col="id")
 # y = category 1 = ko, 0 = ok
@@ -19,11 +20,18 @@ x = dataframe.drop("category", axis=1)
 # 4 fit
 # 5 score => mauvais
 
+scaler = pp.StandardScaler()
+scaler.fit(x)
+x = scaler.transform(x)
+
+
 np.random.seed(0)
 xtrain, xtest, ytrain, ytest = ms.train_test_split(x, y, train_size=0.8, test_size=0.2)
-model = lm.LinearRegression()
-model.fit(xtrain, ytrain)
-train_score = model.score(xtrain, ytrain)
-test_score = model.score(xtest, ytest)
-print(f"Training score: {train_score * 100:.0f}%, test score: {test_score * 100:.0f}%")
+# model = lm.LinearRegression()
+for k in range(3,12,2):
+    model = nn.KNeighborsClassifier(n_neighbors=k)
+    model.fit(xtrain, ytrain)
+    train_score = model.score(xtrain, ytrain)
+    test_score = model.score(xtest, ytest)
+    print(f"k={k}, training score: {train_score * 100:.0f}%, test score: {test_score * 100:.0f}%")
 
