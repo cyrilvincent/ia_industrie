@@ -7,6 +7,7 @@ import sklearn.model_selection as ms
 import sklearn.neighbors as nn
 import sklearn.ensemble as rf
 import matplotlib.pyplot as plt
+import sklearn.metrics as metrics
 
 dataframe = pd.read_csv("data/diffraction/data.csv", index_col="id")
 # y = category 1 = ko, 0 = ok
@@ -44,6 +45,10 @@ test_score = model.score(xtest, ytest)
 print(f"training score: {train_score * 100:.0f}%, test score: {test_score * 100:.0f}%")
 
 print(model.feature_importances_)
+
+predicted = model.predict(xtest)
+print(metrics.confusion_matrix(ytest, predicted))
+print(metrics.classification_report(ytest, predicted))
 
 plt.bar(x.columns, model.feature_importances_)
 plt.xticks(rotation=45)
