@@ -8,6 +8,7 @@ import sklearn.neighbors as nn
 import sklearn.ensemble as rf
 import matplotlib.pyplot as plt
 import sklearn.metrics as metrics
+import sklearn.neural_network as neural
 
 dataframe = pd.read_csv("data/diffraction/data.csv", index_col="id")
 # y = category 1 = ko, 0 = ok
@@ -38,27 +39,30 @@ xtrain, xtest, ytrain, ytest = ms.train_test_split(xscaler, y, train_size=0.8, t
 #     train_score = model.score(xtrain, ytrain)
 #     test_score = model.score(xtest, ytest)
 #     print(f"k={k}, training score: {train_score * 100:.0f}%, test score: {test_score * 100:.0f}%")
-model = rf.RandomForestClassifier()
+# model = rf.RandomForestClassifier()
+model = neural.MLPClassifier(hidden_layer_sizes=(30,20,10))
+# Inputs ? = 30
+# Outputs ? 1
 model.fit(xtrain, ytrain)
 train_score = model.score(xtrain, ytrain)
 test_score = model.score(xtest, ytest)
 print(f"training score: {train_score * 100:.0f}%, test score: {test_score * 100:.0f}%")
 
-print(model.feature_importances_)
+# print(model.feature_importances_)
 
 predicted = model.predict(xtest)
 print(metrics.confusion_matrix(ytest, predicted))
 print(metrics.classification_report(ytest, predicted))
 
-plt.bar(x.columns, model.feature_importances_)
-plt.xticks(rotation=45)
-plt.show()
+# plt.bar(x.columns, model.feature_importances_)
+# plt.xticks(rotation=45)
+# plt.show()
 
-from sklearn.tree import export_graphviz
-export_graphviz(model.estimators_[0],
-                 out_file='data/diffraction/tree.dot',
-                 feature_names = x.columns,
-                 class_names = ["0", "1"],
-                 rounded = True, proportion = False,
-                 precision = 2, filled = True)
+# from sklearn.tree import export_graphviz
+# export_graphviz(model.estimators_[0],
+#                  out_file='data/diffraction/tree.dot',
+#                  feature_names = x.columns,
+#                  class_names = ["0", "1"],
+#                  rounded = True, proportion = False,
+#                  precision = 2, filled = True)
 

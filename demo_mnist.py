@@ -12,6 +12,8 @@ import sklearn.ensemble as rf
 import pickle
 import matplotlib.pyplot as plt
 import sklearn.metrics as metrics
+import sklearn.neural_network as neural
+
 
 np.random.seed(0)
 
@@ -24,7 +26,8 @@ x_train = x_train.reshape(-1, 28*28)
 x_test = x_test.reshape(-1, 28*28)
 
 # model = nn.KNeighborsClassifier(n_neighbors=3)
-model = rf.RandomForestClassifier()
+# model = rf.RandomForestClassifier()
+model = neural.MLPClassifier(hidden_layer_sizes=(784,200,100))
 model.fit(x_train, y_train)
 
 print(model.score(x_test, y_test), model.score(x_train, y_train))
@@ -34,9 +37,9 @@ print(metrics.confusion_matrix(y_test, predicted))
 print(metrics.classification_report(y_test, predicted))
 
 
-matrix = model.feature_importances_.reshape(28, 28)
-plt.imshow(matrix)
-plt.show()
+# matrix = model.feature_importances_.reshape(28, 28)
+# plt.imshow(matrix)
+# plt.show()
 
 images = x_test.reshape((-1, 28, 28))
 
