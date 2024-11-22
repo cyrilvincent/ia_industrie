@@ -6,16 +6,20 @@ import sklearn.preprocessing as pp
 import pickle
 import matplotlib.pyplot as plt
 
-dataframe = pd.read_excel("data/seche/Automatisme2024-11-201740.xlsx", skiprows=[1], na_values="NS")  #, parse_dates=True, date_format='%Y/%m/%d %H:%M:%S')
-dataframe.rename( columns={'Unnamed: 0': 't'}, inplace=True )
+from datetime import datetime
+
+dataframe = pd.read_excel("data/seche/Automatisme2024-11-201740.xlsx", skiprows=[1], na_values="NS")
+dataframe.rename(columns={'Unnamed: 0': 't'}, inplace=True )
 pd.set_option("display.max_columns", None)
 pd.set_option('display.width', None)
-dataframe.set_index("t")
+dataframe['t'] = pd.to_datetime(dataframe['t'], format='%d/%m/%Y %H:%M:%S')
+dataframe["t"] = dataframe["t"].dt.second / 600
+
 print(dataframe.head(5))
 print(dataframe.describe())
 
 dataframe = dataframe.drop("UTI.METEO.HYGROMETRE.MESURE", axis=1)
-dataframe = dataframe.drop("t", axis=1)
+# dataframe = dataframe.drop("t", axis=1)
 dataframe = dataframe.dropna()
 print(dataframe.isna().sum())
 dataframe.to_csv("data/seche/cleaned.csv")
@@ -41,7 +45,8 @@ with open("data/seche/rf.pickle", "wb") as f:
     pickle.dump(model, f)
 
 plt.bar(x.columns, model.feature_importances_)
-plt.xticks(rotation=45)
+plt.xticks(rotation=90)
+plt.tight_layout()
 plt.show()
 
 
