@@ -12,7 +12,7 @@ with open("data/openai/quelle_est_bleue.txt") as f:
 chat_response = client.chat.complete(
     model = model,
     messages = [
-        {"role": "system", "content": "De quoi parle ce texte en 5 mots maximum au format json?"},
+        {"role": "system", "content": "De quoi parle ce texte?"},
         {"role": "user", "content": text},
     ]
 )
