@@ -27,18 +27,25 @@ print(x_train.shape, y_train.shape, x_test.shape, y_test.shape)
 x_train = (x_train - 127.5) / 127.5
 x_test = (x_test - 127.5) / 127.5
 
-x_train = x_train.reshape(-1, 28*28)
-x_test = x_test.reshape(-1, 28*28)
-
 y_train = tf.keras.utils.to_categorical(y_train)
 y_test = tf.keras.utils.to_categorical(y_test)
 
-model = tf.keras.Sequential([
-    tf.keras.layers.Dense(784, activation="relu", input_shape=(x_train.shape[1],)),
-    tf.keras.layers.Dense(500, activation="relu"),
-    tf.keras.layers.Dense(200, activation="relu"),
-    tf.keras.layers.Dense(10, activation="softmax"),
-  ])
+x_train = x_train.reshape(x_train.shape[0], 28,28,1)
+x_test = x_test.reshape(x_test.shape[0], 28,28,1)
+
+model = tf.keras.Sequential()
+model.add(tf.keras.layers.Conv2D(16, (3, 3), input_shape=(28, 28, 1), padding="same")) # 28*28*16
+model.add(tf.keras.layers.Activation('relu'))
+model.add(tf.keras.layers.MaxPooling2D(pool_size=(2, 2))) # 14,14,16
+
+model.add(tf.keras.layers.Conv2D(16, (3, 3), input_shape=(28, 28))) # 10*10*16
+model.add(tf.keras.layers.Activation('relu'))
+model.add(tf.keras.layers.MaxPooling2D(pool_size=(2, 2))) # 5*5*16
+
+model.add(tf.keras.layers.Flatten()) # 160
+model.add(tf.keras.layers.Dense(160, activation="relu"))
+model.add(tf.keras.layers.Dense(80, activation="relu"))
+model.add(tf.keras.layers.Dense(10, activation="softmax"))
 
 model.compile(loss="categorical_crossentropy", metrics=["accuracy"])
 print(model.summary())

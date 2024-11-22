@@ -1,21 +1,6 @@
-import pickle
-
-import numpy as np
-import sklearn.model_selection as ms
-import sklearn.metrics as metrics
-import sklearn.neighbors as nn
-import sklearn.ensemble as tree
-import sklearn.svm as svm
-import pickle
-import sklearn.svm as svm
-import sklearn.ensemble as rf
-import pickle
-import matplotlib.pyplot as plt
-import sklearn.metrics as metrics
-import sklearn.neural_network as neural
 import tensorflow as tf
 import matplotlib.pyplot as plt
-
+import numpy as np
 
 np.random.seed(0)
 
@@ -30,26 +15,11 @@ x_test = (x_test - 127.5) / 127.5
 x_train = x_train.reshape(-1, 28*28)
 x_test = x_test.reshape(-1, 28*28)
 
-y_train = tf.keras.utils.to_categorical(y_train)
-y_test = tf.keras.utils.to_categorical(y_test)
 
-model = tf.keras.Sequential([
-    tf.keras.layers.Dense(784, activation="relu", input_shape=(x_train.shape[1],)),
-    tf.keras.layers.Dense(500, activation="relu"),
-    tf.keras.layers.Dense(200, activation="relu"),
-    tf.keras.layers.Dense(10, activation="softmax"),
-  ])
-
-model.compile(loss="categorical_crossentropy", metrics=["accuracy"])
-print(model.summary())
-model.fit(x_train, y_train, epochs=10, validation_data=(x_test, y_test))
-score = model.evaluate(x_test, y_test)
-print(score)
-
-model.save("data/mnist/mnist.h5")
-
+model = tf.keras.models.load_model("data/mnist/mnist.h5")
 predicted = model.predict(x_test)
 print(predicted)
+y_test = tf.keras.utils.to_categorical(y_test)
 
 
 # Gestion des erreurs

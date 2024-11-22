@@ -28,7 +28,7 @@ y_test = yscaler.transform(y_test)
 model = tf.keras.Sequential([
     tf.keras.layers.Dense(10, activation="relu", input_shape=(x_train.shape[1],)),
     tf.keras.layers.Dense(10, activation="relu"),
-    tf.keras.layers.Dense(1, activation=tf.nn.sigmoid),
+    tf.keras.layers.Dense(10, activation=tf.nn.sigmoid),
   ])
 model.compile(loss="mse", metrics=["accuracy"])
 trained = model.fit(x_train, y_train, epochs=20,validation_data=(x_test, y_test))
