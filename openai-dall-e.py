@@ -1,6 +1,6 @@
 from openai import OpenAI
 
-with open("data/chatgpt/openai.env") as f:
+with open("data/openai/openai.env") as f:
     key = f.read()
 
 client = OpenAI(api_key=key)

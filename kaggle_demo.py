@@ -10,8 +10,8 @@ import os
 for dirname, _, _ in os.walk('/waste'):
         print(dirname)
 
-train_path = "waste/waste-classification-data/DATASET/TRAIN/"
-test_path = "waste/waste-classification-data/DATASET/TEST/"
+train_path = "C:/Users/conta/Downloads/archive/DATASET/TRAIN/"
+test_path = "C:/Users/conta/Downloads/archive/DATASET/TEST/"
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Activation, Dropout, Flatten, Dense, BatchNormalization
@@ -96,10 +96,10 @@ test_generator = test_datagen.flow_from_directory(
         color_mode= "rgb",
         class_mode= "categorical")
 
-hist = model.fit_generator(
-        generator = train_generator,
+hist = model.fit(
+        train_generator,
         epochs=10,
-        validation_data = test_generator)
+        validation_data=test_generator)
 
 plt.figure(figsize=[10,6])
 plt.plot(hist.history["accuracy"], label = "Train acc")
@@ -117,5 +117,5 @@ def predict_func(img):
     if result == 0: print("\033[94m"+"This image -> Recyclable"+"\033[0m")
     elif result ==1: print("\033[94m"+"This image -> Organic"+"\033[0m")
 
-test_img = cv2.imread("/waste/waste-classification-data/DATASET/TEST/O/O_12573.jpg")
+test_img = cv2.imread("C:/Users/conta/Downloads/archive/DATASET/TEST/O/O_12573.jpg")
 predict_func(test_img)
