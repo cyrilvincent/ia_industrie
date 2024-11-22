@@ -10,6 +10,7 @@ import os
 for dirname, _, _ in os.walk('/waste'):
         print(dirname)
 
+# URL kaggle https://www.kaggle.com/code/beyzanks/waste-classification-with-cnn/input
 train_path = "C:/Users/conta/Downloads/archive/DATASET/TRAIN/"
 test_path = "C:/Users/conta/Downloads/archive/DATASET/TEST/"
 

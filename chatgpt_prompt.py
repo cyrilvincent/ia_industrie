@@ -1,17 +1,21 @@
-from openai import OpenAI, __version__
+from mistralai import Mistral
 
-print(__version__)
+api_key = "XcQT0ja9j17oaAoWjeQXsLfoCwcoU4oV"
+model = "open-mistral-7b"
+
 def chat(system: str, user: str) -> str:
-    completion = client.chat.completions.create(
-        model=chat_model,
-        messages=[{"role": "system", "content": system},
-                  {"role": "user", "content": user}])
-    return completion.choices[0].message.content
+    chat_response = client.chat.complete(
+        model="open-mistral-7b",
+        messages=[
+            {"role": "system", "content": system},
+            {"role": "user", "content": user},
+        ]
+    )
+    return chat_response.choices[0].message.content
 
 with open("data/openai/openai.env") as f:
     key = f.read()
-client = OpenAI(api_key=key)
-chat_model = "gpt-3.5-turbo-1106"
+client = Mistral(api_key=api_key)
 old_system = ""
 old_user = ""
 print("CTRL + C pour arrêter")
