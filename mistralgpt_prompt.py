@@ -1,7 +1,6 @@
 from mistralai import Mistral
 
 api_key = "XcQT0ja9j17oaAoWjeQXsLfoCwcoU4oV"
-model = "open-mistral-7b"
 
 def chat(system: str, user: str) -> str:
     chat_response = client.chat.complete(
@@ -13,8 +12,6 @@ def chat(system: str, user: str) -> str:
     )
     return chat_response.choices[0].message.content
 
-with open("data/openai/openai.env") as f:
-    key = f.read()
 client = Mistral(api_key=api_key)
 old_system = ""
 old_user = ""
