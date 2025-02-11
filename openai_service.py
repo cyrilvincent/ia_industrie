@@ -33,12 +33,12 @@ class OpenAIService:
                 {"role": "user", "content": text}])
         return completion.choices[0].message.content
 
-    def correction(self, text: str, ponctuation=True, bank=True) -> str:
+    def correction(self, text: str, ponctuation=True, indus=True) -> str:
         s = "Corriges moi ce texte "
         if ponctuation:
             s+="avec de la ponctuation "
-        if bank:
-            s+="avec un vocabulaire du monde du traitement de déchets"
+        if indus:
+            s+="avec un vocabulaire du monde de l'industrie"
         completion = self.client.chat.completions.create(
             model=self.chat_model,
             messages=[{"role": "system", "content": s},

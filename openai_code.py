@@ -11,9 +11,11 @@ with open("openai_code.py") as f:
 
 client = OpenAI(api_key=key)
 
+nb_points = 3
+
 completion = client.chat.completions.create(model="gpt-4o", max_tokens=1000,
     messages=[
-        {"role": "system", "content": "Explique moi ca que fais ce code Python"},
+        {"role": "system", "content": f"Explique moi ca que fais ce code Python en {nb_points} points et 50 mots max"},
         {"role": "user", "content": text}
     ]
 )

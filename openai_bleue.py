@@ -10,7 +10,7 @@ print(text)
 
 client = OpenAI(api_key=key)
 
-completion = client.chat.completions.create(model="gpt-3.5-turbo",
+completion = client.chat.completions.create(model="gpt-4o",
     messages=[
         {"role": "system", "content": "De quoi parle ce texte en 5 mots maximum au format json?"},
         {"role": "user", "content": text}
@@ -20,6 +20,6 @@ completion = client.chat.completions.create(model="gpt-3.5-turbo",
 res = completion.choices[0].message
 print(res.content)
 
-import json
-dico = json.loads(res.content)
-print(dico["theme"])
+# import json
+# dico = json.loads(res.content)
+# print(dico)
