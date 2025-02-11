@@ -34,7 +34,7 @@ model.fit(x_train, y_train, epochs=10, validation_data=(x_test, y_test))
 score = model.evaluate(x_test, y_test)
 print(score)
 
-model.save("data/mnist/mnist.h5")
+model.save("data/mnist/mnist.h5") # Netron 13h45
 
 predicted = model.predict(x_test)
 print(predicted)
