@@ -38,9 +38,9 @@ xtrain, xtest, ytrain, ytest = ms.train_test_split(x, y, train_size=0.8, test_si
 
 
 # model = lm.LinearRegression()
-# model = n.KNeighborsClassifier(n_neighbors=5)
+model = n.KNeighborsClassifier(n_neighbors=5)
 # model = rf.RandomForestClassifier(max_depth=5)
-model = nn.MLPClassifier(hidden_layer_sizes=(30,10))
+# model = nn.MLPClassifier(hidden_layer_sizes=(30,10))
 model.fit(xtrain, ytrain)
 score = model.score(xtrain, ytrain)
 print(score)
