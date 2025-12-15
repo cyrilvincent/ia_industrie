@@ -1,0 +1,4 @@
+digraph Tree {
+node [shape=box, fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
+0 [label="541 <= 0.5\ngini = 0.9\nsamples = 37964\nvalue = [5851, 6773, 6017, 6043, 5798, 5478, 6001, 6321, 5811\n5907]\nclass = 1"] ;
