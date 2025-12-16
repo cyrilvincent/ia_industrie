@@ -24,5 +24,3 @@ label = decode_predictions(yhat)
 label = label[0][0]
 # print the classification
 print('%s (%.2f%%)' % (label[1], label[2]*100))
-
-model.fit()
