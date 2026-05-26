@@ -9,8 +9,9 @@ import tensorflow_hub as hub
 print(os.path.join(tempfile.gettempdir(), "tfhub_modules"))
 
 module_url = "https://tfhub.dev/google/universal-sentence-encoder/4" #"https://tfhub.dev/google/universal-sentence-encoder-lite/2" #"https://tfhub.dev/google/universal-sentence-encoder/4" #"https://tfhub.dev/google/universal-sentence-encoder-large/5"
+print(f"Loading {module_url}")
 model = hub.load(module_url)
-print ("module %s loaded" % module_url)
+print("Loaded")
 
 class Item:
 
@@ -72,6 +73,8 @@ if __name__ == '__main__':
     print(f"{res[0].answer} @{res[1] * 100:.0f}%")
     while True:
         s = input("> ")
+        if s == "exit":
+            break
         res = service.predict(s)
         print(f"{res[0].answer} @{res[1] * 100:.0f}%")
 
