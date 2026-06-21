@@ -1,0 +1,4 @@
+Chaque groupe reçoit un dataset Excel avec des données de recrutement fictives. Ils doivent :
+•	Identifier les variables potentiellement biaisées
+•	Prédire manuellement qui sera recruté
+•	Comparer avec la décision d'un modèle IA fictif

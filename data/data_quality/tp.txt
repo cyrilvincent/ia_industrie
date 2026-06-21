@@ -1,0 +1,6 @@
+Exercice 2 : "Qualité des données" (45min, individuel)
+Un fichier Excel avec des données industrielles sales (valeurs manquantes, outliers, doublons, unités incohérentes).  :
+•	Identifier les problèmes
+•	Estimer l'impact sur un modèle IA
+•	Proposer des corrections sans coder
+Objectif : comprendre que "garbage in, garbage out".

@@ -1,0 +1,44 @@
+CATÉGORIE : MAINTENANCE & PRODUCTION
+
+Prédire la date de défaillance d'un compresseur à partir de ses vibrations et températures
+Détecter visuellement des rayures sur des pièces métalliques en sortie de ligne
+Optimiser l'ordre de passage des pièces sur une fraiseuse CNC pour minimiser les changements d'outil
+Calculer le stock minimum de pièces détachées pour ne jamais être en rupture
+Générer automatiquement les bons de travail de maintenance corrective
+
+CATÉGORIE : QUALITÉ
+
+Classer des pièces en "conforme / non-conforme" à partir de photos haute résolution
+Identifier quelle machine est responsable d'une série de défauts sur 3 jours
+Prédire le taux de rebut de la journée à partir des paramètres de réglage du matin
+Vérifier qu'un opérateur porte bien ses EPI (casque, gants, lunettes) en temps réel
+Rédiger automatiquement les rapports de non-conformité à partir de données de contrôle
+
+CATÉGORIE : ÉNERGIE & ENVIRONNEMENT
+
+Prévoir la consommation électrique de l'usine pour le lendemain et adapter les contrats
+Détecter une fuite de gaz comprimé à partir de la courbe de consommation du compresseur
+Décider d'arrêter ou non une ligne en fonction du prix spot de l'électricité
+Trier automatiquement les déchets industriels sur un tapis convoyeur par type de matière
+
+CATÉGORIE : SUPPLY CHAIN & LOGISTIQUE
+
+Prévoir les délais de livraison fournisseur en tenant compte de la météo et des grèves
+Optimiser les tournées de chariots élévateurs dans un entrepôt de 50 000 m²
+Détecter une anomalie dans une facture fournisseur (montant inhabituel, doublon)
+Décider d'accepter ou refuser une commande urgente selon la capacité disponible
+
+CATÉGORIE : RH & SÉCURITÉ
+
+Détecter un comportement à risque d'accident (geste brusque, zone interdite) via caméra
+Prédire quel opérateur risque de quitter l'entreprise dans les 6 prochains mois
+
+
+Grille de réponse suggérée
+Pour chaque cas, les participants remplissent :
+IA pertinente ?
+Type d'IA
+Données nécessaires
+Difficulté
+Risque éthique
+Embarquable
