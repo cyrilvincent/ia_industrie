@@ -3,4 +3,10 @@ Aller dans le répertoire du projet avec la commande cd
 pip install numpy==1.26.4
 pip install scikit-learn
 python hello.py
-Télecharger depus github
+Télecharger depuis github demo_house.py dans le répertoire racine (où il y a hello.py)
+dir
+pip install matplotlib
+pip install pandas
+python demo_house.py
+
+
