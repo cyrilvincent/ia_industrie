@@ -1,0 +1,13 @@
+Valeurs manquantes
+Incohérences d'unité Energie_kwh
+Nb pièce < 0
+Taux défauts > 100% ou incohérent
+Espaces en début et fin de data trim()
+Machine ID invalides
+Températures abérrantes : moyenne et écarts types des t°
+Pressions < 0 + outliers
+Status incohérents
+Dates invalides + futur
+Doublons
+
+
