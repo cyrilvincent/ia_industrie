@@ -1,2 +1,6 @@
-Python 3.10.1
-pip install -r requirements.txt
+cmd
+Aller dans le répertoire du projet avec la commande cd
+pip install numpy==1.26.4
+pip install scikit-learn
+python hello.py
+Télecharger depus github
