@@ -26,7 +26,7 @@ model = lm.LinearRegression()
 # f(x) = 3 * x + 2
 # f(x) = ax² + bx + c
 
-model = pipe.make_pipeline(pp.PolynomialFeatures(2), lm.Ridge())
+# model = pipe.make_pipeline(pp.PolynomialFeatures(2), lm.Ridge())
 # degre = 1
 # model = pipe.make_pipeline(pp.PolynomialFeatures(degre), lm.Ridge())
 # for k in range(3,12,2):
