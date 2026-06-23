@@ -1,0 +1,10 @@
+# Re télécharger demo_diffraction depuis github
+# python demo_diffraction
+# Ouvrir le fichier data/diffraction/tree.dot
+# Copier le contenu
+# Aller sur https://dreampuf.github.io/GraphvizOnline
+# Coller le contenu
+# Améliorer le orange avec un RandomForest
+# Aller sur obious.Ai
+# Uploader le fichier data/diffraction.data.csv
+# Prompt : Train test split le dataset en 80% 20% puis utilise comme modèle RandomForest avec 100 arbres et affiche moi l’accuracy après entrainement
