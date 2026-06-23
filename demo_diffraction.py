@@ -33,10 +33,6 @@ np.random.seed(42)
 
 xtrain, xtest, ytrain, ytest = ms.train_test_split(x, y, train_size=0.8, test_size=0.2)
 
-
-
-
-
 # model = lm.LinearRegression()
 model = n.KNeighborsClassifier(n_neighbors=3)
 # model = rf.RandomForestClassifier()
