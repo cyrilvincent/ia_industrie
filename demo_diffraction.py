@@ -25,17 +25,17 @@ pd.set_option('display.max_rows', None)
 
 np.random.seed(42)
 
-# scaler = pp.StandardScaler()
-# scaler.fit(x) # Calcul moy et std pour chacune des colonnes
-# x = scaler.transform(x) # (x - moy) / std
-# # scaler.inverse_transform(x)
+scaler = pp.StandardScaler()
+scaler.fit(x) # Calcul moy et std pour chacune des colonnes
+x = scaler.transform(x) # (x - moy) / std
+# scaler.inverse_transform(x)
 
 
 xtrain, xtest, ytrain, ytest = ms.train_test_split(x, y, train_size=0.8, test_size=0.2)
 
 # model = lm.LinearRegression()
 model = n.KNeighborsClassifier(n_neighbors=3)
-model = rf.RandomForestClassifier(n_estimators=100)
+model = rf.RandomForestClassifier(n_estimators=1000)
 # model = nn.MLPClassifier(hidden_layer_sizes=(30,10))
 model.fit(xtrain, ytrain)
 score = model.score(xtrain, ytrain)
