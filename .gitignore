@@ -16,5 +16,6 @@ temp/**
 **/charge.csv
 venv/*
 .idea
+data/secrets
 
 
