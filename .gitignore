@@ -17,5 +17,6 @@ temp/**
 venv/*
 .idea
 data/secrets
+*.p
 
 
