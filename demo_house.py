@@ -16,11 +16,17 @@ dataframe = pd.read_csv("data/house/house.csv")
 y = dataframe["loyer"]
 x = dataframe["surface"].values.reshape(-1, 1)
 
-# np.random.seed(0)
-# xtrain, xtest, ytrain, ytest = ms.train_test_split(x, y, train_size=0.8, test_size=0.2)
+np.random.seed(0)
+xtrain, xtest, ytrain, ytest = ms.train_test_split(x, y, train_size=0.8, test_size=0.2)
 
 # 2 = créer le modèle
 model = lm.LinearRegression()
+
+# f(x) = a * x + b
+# f(x) = 3 * x + 2
+# f(x) = ax² + bx + c
+
+model = pipe.make_pipeline(pp.PolynomialFeatures(2), lm.Ridge())
 # degre = 1
 # model = pipe.make_pipeline(pp.PolynomialFeatures(degre), lm.Ridge())
 # for k in range(3,12,2):
@@ -31,15 +37,15 @@ model = lm.LinearRegression()
 # 3 = Fit = Apprentissage
 # Un seul interdit, ne JAMAIS s'entrainer sur le xtest
 
-model.fit(x, y)
+model.fit(xtrain, ytrain)
 
 xsample = np.arange(400).reshape(-1, 1)
 # 4 Prédiction
 predicted = model.predict(xsample)
 
-# score_train = model.score(xtrain, ytrain)
-# score_test = model.score(xtest, ytest)
-# print(score_train, score_test)
+score_train = model.score(xtrain, ytrain)
+score_test = model.score(xtest, ytest)
+print(score_train, score_test)
 
 # print(model.coef_, model.intercept_)
 
