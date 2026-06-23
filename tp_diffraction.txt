@@ -1,0 +1,3 @@
+Télécharger data/diffraction/data.Csv depuis github
+Faire un orange et tester plusieurs valeurs de k
+Tester cemo_diffraction.py
