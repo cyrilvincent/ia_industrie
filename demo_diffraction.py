@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import sklearn.linear_model as lm
-import sklearn.model_selection as ms
+import sklearn.model_selection as ms  #☺ Scikit Learn
 import sklearn.neighbors as n
 import matplotlib.pyplot as plt
 import sklearn.preprocessing as pp
