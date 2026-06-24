@@ -1,5 +1,8 @@
 import os
 from mistralai import Mistral
+import mistralai
+
+print(mistralai.__version__)
 
 with open("data/secrets/mistral.secret") as f:
     api_key = f.read()
